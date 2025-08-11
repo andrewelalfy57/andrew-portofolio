@@ -1,4 +1,4 @@
-import { Code, Cpu, Layers, Languages } from "lucide-react"
+import { Code, Cpu, Layers, Languages } from "lucide-react";
 
 export const experience = [
   {
@@ -52,7 +52,7 @@ export const experience = [
       "Improved engagement and conversions with Web-based AR previews.",
     ],
   },
-]
+];
 
 export const skills = [
   {
@@ -65,27 +65,58 @@ export const skills = [
     title: "Web & Mobile",
     subtitle: "Frontend and cross-platform",
     icon: <Layers className="h-6 w-6 text-pink-500" />,
-    items: ["React", "React Native", "Next.js (App Router)", "Redux", "HTML", "CSS", "Responsive Design", "Perf Opt"],
+    items: [
+      "React",
+      "React Native",
+      "Next.js (App Router)",
+      "Redux",
+      "HTML",
+      "CSS",
+      "Responsive Design",
+      "Perf Opt",
+    ],
   },
   {
     title: "Backend & Cloud",
     subtitle: "Scalable, resilient systems",
     icon: <Cpu className="h-6 w-6 text-violet-500" />,
-    items: ["Node.js", "GraphQL", "REST", "PostgreSQL", "MySQL", "MongoDB", "Redis", "AWS"],
+    items: [
+      "Node.js",
+      "GraphQL",
+      "REST",
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+      "Redis",
+      "AWS",
+    ],
   },
   {
     title: "Tooling & Methodologies",
     subtitle: "Ship fast, keep it robust",
     icon: <Code className="h-6 w-6 text-cyan-500" />,
-    items: ["Git", "GitHub", "CI/CD", "CircleCI", "Ansible", "Prometheus", "Scrum", "Cloud Deployment"],
+    items: [
+      "Git",
+      "GitHub",
+      "CI/CD",
+      "CircleCI",
+      "Ansible",
+      "Prometheus",
+      "Scrum",
+      "Cloud Deployment",
+    ],
   },
   {
     title: "Languages",
     subtitle: "Communication",
     icon: <Languages className="h-6 w-6 text-emerald-500" />,
-    items: ["Arabic (Native/Bilingual)", "English (Native/Bilingual)", "German (B1)"],
+    items: [
+      "Arabic (Native/Bilingual)",
+      "English (Native/Bilingual)",
+      "German (B1)",
+    ],
   },
-]
+];
 
 export const projects = [
   {
@@ -101,7 +132,8 @@ export const projects = [
   {
     label: "Integrations",
     title: "Veeva Vault Integrations",
-    description: "Microservices and APIs integrating Veeva Vault with clinical systems, improving processing by 65%.",
+    description:
+      "Microservices and APIs integrating Veeva Vault with clinical systems, improving processing by 65%.",
     tech: ["Node.js", "Java", "Spring Boot", "PostgreSQL", "Redis"],
     live: undefined,
     code: undefined,
@@ -110,10 +142,11 @@ export const projects = [
   {
     label: "Immersive",
     title: "AR Restaurant Ads",
-    description: "QR-based Web AR previews showing 3D menu items/products to boost engagement.",
+    description:
+      "QR-based Web AR previews showing 3D menu items/products to boost engagement.",
     tech: ["Three.js", "WebXR"],
     live: undefined,
     code: undefined,
     image: "/webxr-ar-experience.png",
   },
-]
+];

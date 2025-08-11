@@ -26,6 +26,7 @@ export function ExperienceTimeline() {
               viewport={{ once: true, amount: 0.9 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             />
+            /
           </div>
           <p className="mt-4 text-slate-600 dark:text-slate-300">
             Enterprise platforms, cloud-native systems, and immersive tech.

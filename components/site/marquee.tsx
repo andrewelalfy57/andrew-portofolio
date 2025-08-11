@@ -46,7 +46,7 @@ export function Marquee({
           </div>
         ) : (
           <motion.div
-            className="flex items-center from-cyan-500 to-indigo-600"
+            className="flex items-center bg-gradient from-cyan-500 to-indigo-600"
             animate={{ x: [0, -800] }}
             transition={{ duration: speed, ease: "linear", repeat: Infinity }}
           >

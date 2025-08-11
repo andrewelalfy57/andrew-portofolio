@@ -1,13 +1,14 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useEffect, useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { cn } from "@/lib/utils"
-import { Menu, Download, Moon, Sun } from "lucide-react"
-import { ThemeToggle } from "./theme-toggle"
-import { motion } from "framer-motion"
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+import { Menu, Download, Moon, Sun } from "lucide-react";
+import { ThemeToggle } from "./theme-toggle";
+import { motion } from "framer-motion";
+import { Magnetic } from "@/components/site/magnetic";
 
 const navItems = [
   { href: "#home", label: "Home" },
@@ -16,28 +17,28 @@ const navItems = [
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
-]
+];
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [active, setActive] = useState<string>("#home")
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState<string>("#home");
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 10)
-      let current = "#home"
+      setScrolled(window.scrollY > 10);
+      let current = "#home";
       for (const item of navItems) {
-        const sec = document.querySelector(item.href) as HTMLElement | null
-        if (!sec) continue
-        const top = sec.offsetTop - 140
-        if (window.scrollY >= top) current = item.href
+        const sec = document.querySelector(item.href) as HTMLElement | null;
+        if (!sec) continue;
+        const top = sec.offsetTop - 140;
+        if (window.scrollY >= top) current = item.href;
       }
-      setActive(current)
-    }
-    onScroll()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+      setActive(current);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header
@@ -45,12 +46,19 @@ export function Navbar() {
         "fixed top-0 z-50 w-full transition-all",
         scrolled
           ? "backdrop-blur-xl bg-white/70 dark:bg-[#0a0e27]/70 border-b border-slate-200/60 dark:border-slate-700/60 py-2"
-          : "bg-transparent py-4",
+          : "bg-transparent py-4"
       )}
       role="banner"
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 md:px-6" aria-label="Primary">
-        <Link href="#home" className="group inline-flex items-center gap-2" aria-label="Go to home">
+      <nav
+        className="mx-auto flex max-w-7xl items-center justify-between px-4 md:px-6"
+        aria-label="Primary"
+      >
+        <Link
+          href="#home"
+          className="group inline-flex items-center gap-2"
+          aria-label="Go to home"
+        >
           <span className="text-2xl font-black tracking-tight bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-500 bg-clip-text text-transparent">
             Andrew.
           </span>
@@ -59,20 +67,22 @@ export function Navbar() {
 
         <ul className="relative hidden items-center gap-2 rounded-full border border-slate-200/60 bg-white/60 p-1.5 backdrop-blur dark:border-slate-700/60 dark:bg-slate-900/40 md:flex">
           {navItems.map((item) => {
-            const isActive = active === item.href
+            const isActive = active === item.href;
             return (
               <li key={item.href} className="relative">
-                <a
-                  href={item.href}
-                  className={cn(
-                    "relative z-10 block rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors",
-                    isActive
-                      ? "text-slate-900 dark:text-white"
-                      : "text-slate-600 hover:text-slate-900 dark:text-slate-300",
-                  )}
-                >
-                  {item.label}
-                </a>
+                <Magnetic strength={0.3}>
+                  <a
+                    href={item.href}
+                    className={cn(
+                      "relative z-10 block rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors",
+                      isActive
+                        ? "text-slate-900 dark:text-white"
+                        : "text-slate-600 hover:text-slate-900 dark:text-slate-300"
+                    )}
+                  >
+                    {item.label}
+                  </a>
+                </Magnetic>
                 {isActive && (
                   <motion.span
                     layoutId="activeNav"
@@ -81,7 +91,7 @@ export function Navbar() {
                   />
                 )}
               </li>
-            )
+            );
           })}
         </ul>
 
@@ -118,7 +128,10 @@ export function Navbar() {
                     {item.label}
                   </a>
                 ))}
-                <Button asChild className="mt-2 bg-gradient-to-r from-cyan-500 to-indigo-600">
+                <Button
+                  asChild
+                  className="mt-2 bg-gradient-to-r from-cyan-500 to-indigo-600"
+                >
                   <a href="/Andrew_Alfy_Resume.pdf" download>
                     Download CV
                   </a>
@@ -129,5 +142,5 @@ export function Navbar() {
         </div>
       </nav>
     </header>
-  )
+  );
 }

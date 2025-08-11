@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MapPin, Mail } from "lucide-react";
 import { motion } from "framer-motion";
+import { Magnetic } from "@/components/site/magnetic";
 const name = "Andrew Ayman Alfy";
 const chars = name.split("");
 export function Hero() {
@@ -94,15 +95,17 @@ export function Hero() {
         </motion.div>
 
         <div className="flex flex-wrap gap-3">
-          <Button
-            asChild
-            className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 will-change-transform transition-transform duration-200 ease-out hover:translate-y-[-1px]"
-          >
-            <a href="#contact">
-              Let&apos;s build something amazing
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
-          </Button>
+          <Magnetic>
+            <Button
+              asChild
+              className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 will-change-transform transition-transform duration-200 ease-out hover:translate-y-[-1px]"
+            >
+              <a href="#contact">
+                Let&apos;s build something amazing
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
+          </Magnetic>
           <Button variant="outline" asChild>
             <a href="#projects">Explore my work</a>
           </Button>

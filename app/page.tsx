@@ -16,6 +16,7 @@ import { Education } from "@/components/site/education";
 import { Aurora } from "@/components/site/aurora";
 import { Splash } from "@/components/site/splash";
 import { Marquee } from "@/components/site/marquee";
+import { SectionDivider } from "@/components/site/section-divider";
 
 export default function Page() {
   const [showSplash, setShowSplash] = useState(true);
@@ -69,6 +70,7 @@ export default function Page() {
         <MotionSection id="home">
           <Hero />
         </MotionSection>
+        <SectionDivider />
         <div className="mx-auto max-w-7xl px-4 md:px-6">
           <Marquee />
         </div>

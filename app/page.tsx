@@ -1,8 +1,7 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useState } from "react"
 import { Navbar } from "@/components/site/navbar"
-import { BackgroundOrbs } from "@/components/site/background-orbs"
 import { ScrollProgress } from "@/components/site/scroll-progress"
 import { BackToTop } from "@/components/site/back-to-top"
 import { Hero } from "@/components/site/hero"
@@ -13,43 +12,49 @@ import { Contact } from "@/components/site/contact"
 import { Footer } from "@/components/site/footer"
 import { MotionSection } from "@/components/site/motion-section"
 import { Education } from "@/components/site/education"
+import { Aurora } from "@/components/site/aurora"
+import { Splash } from "@/components/site/splash"
 
 export default function Page() {
-  // Smooth scroll behavior on client
+  const [showSplash, setShowSplash] = useState(true)
+
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth"
+    const seen = window.sessionStorage.getItem("seenSplash")
+    if (seen === "1") setShowSplash(false)
   }, [])
 
-  // Reduce motion preference
-  const prefersReducedMotion = useRef(false)
   useEffect(() => {
-    prefersReducedMotion.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  }, [])
+    document.body.style.overflow = showSplash ? "hidden" : ""
+  }, [showSplash])
 
   return (
-    <main className="relative min-h-screen bg-white text-slate-900 dark:bg-[#0a0e27] dark:text-slate-100">
+    <main className="relative min-h-screen text-slate-900 dark:text-slate-100">
+      {showSplash && <Splash onDone={() => setShowSplash(false)} />}
       <ScrollProgress />
-      <BackgroundOrbs />
-      <Navbar />
-      <MotionSection id="home">
-        <Hero />
-      </MotionSection>
-      <MotionSection id="experience">
-        <ExperienceTimeline />
-      </MotionSection>
-      <MotionSection id="education">
-        <Education />
-      </MotionSection>
-      <MotionSection id="skills">
-        <Skills />
-      </MotionSection>
-      <MotionSection id="projects">
-        <Projects />
-      </MotionSection>
-      <MotionSection id="contact">
-        <Contact />
-      </MotionSection>
-      <Footer />
+      <Aurora />
+      <div className="relative z-10">
+        <Navbar />
+        <MotionSection id="home">
+          <Hero />
+        </MotionSection>
+        <MotionSection id="experience">
+          <ExperienceTimeline />
+        </MotionSection>
+        <MotionSection id="education">
+          <Education />
+        </MotionSection>
+        <MotionSection id="skills">
+          <Skills />
+        </MotionSection>
+        <MotionSection id="projects">
+          <Projects />
+        </MotionSection>
+        <MotionSection id="contact">
+          <Contact />
+        </MotionSection>
+        <Footer />
+      </div>
       <BackToTop />
     </main>
   )

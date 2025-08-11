@@ -8,22 +8,22 @@ import { cn } from "@/lib/utils"
 
 export function ExperienceTimeline() {
   return (
-    <section className="relative bg-slate-50 py-16 dark:bg-[#0f1433]">
+    <section className="relative bg-slate-50/80 py-20 backdrop-blur-[1px] dark:bg-[#0f1433]/80">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
-        <header className="mb-12 text-center">
-          <h3 className="bg-gradient-to-r from-cyan-500 to-pink-500 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl">
+        <header className="mb-14 text-center">
+          <h3 className="bg-gradient-to-r from-cyan-500 to-indigo-600 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl">
             Experience
           </h3>
           <p className="mt-2 text-slate-600 dark:text-slate-300">
-            A journey across enterprise platforms, cloud-native systems, and immersive tech.
+            Enterprise platforms, cloud-native systems, and immersive tech.
           </p>
         </header>
 
         <div className="relative">
-          <div
-            className="timeline-line pointer-events-none absolute left-1/2 top-0 hidden h-full -translate-x-1/2 md:block"
-            aria-hidden="true"
-          />
+          <div className="pointer-events-none absolute left-1/2 top-0 hidden h-full -translate-x-1/2 md:block">
+            <div className="h-full w-[3px] rounded-full bg-gradient-to-b from-cyan-400 to-indigo-600 opacity-60" />
+          </div>
+
           <div className="space-y-10 md:space-y-16">
             {experience.map((item, idx) => {
               const left = idx % 2 === 0
@@ -40,7 +40,7 @@ export function ExperienceTimeline() {
                   )}
                 >
                   <div className="relative md:col-span-1">
-                    <Card className="relative border-slate-200/60 bg-white/80 p-6 shadow-lg backdrop-blur dark:border-slate-700/60 dark:bg-slate-900/50">
+                    <Card className="relative border-slate-200/70 bg-white/85 p-6 shadow-xl ring-1 ring-transparent transition-all hover:-translate-y-1 hover:ring-cyan-300/40 dark:border-slate-700/60 dark:bg-slate-900/60 dark:hover:ring-indigo-800/40">
                       <div className="mb-2 inline-flex items-center gap-2">
                         <span className="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-3 py-1 text-xs font-semibold text-cyan-700 ring-1 ring-cyan-200 dark:bg-cyan-900/30 dark:text-cyan-200 dark:ring-cyan-800">
                           <Briefcase className="h-3.5 w-3.5" />
@@ -61,11 +61,11 @@ export function ExperienceTimeline() {
                           </li>
                         ))}
                       </ul>
+                      <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/60 [mask-image:linear-gradient(to_bottom,black,transparent_85%)] dark:ring-white/10" />
                     </Card>
-
                     <span
                       className={cn(
-                        "timeline-dot absolute top-6 hidden h-5 w-5 -translate-y-1/2 rounded-full bg-gradient-to-r from-cyan-500 to-pink-500 ring-4 ring-white dark:ring-[#0f1433] md:block",
+                        "absolute top-6 hidden h-5 w-5 -translate-y-1/2 rounded-full bg-gradient-to-r from-cyan-500 to-indigo-600 ring-4 ring-slate-50 dark:ring-[#0f1433] md:block",
                         left ? "-left-6" : "-right-6",
                       )}
                     />
@@ -78,14 +78,6 @@ export function ExperienceTimeline() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .timeline-line {
-          width: 3px;
-          background: linear-gradient(180deg, #22d3ee, #f472b6);
-          border-radius: 999px;
-        }
-      `}</style>
     </section>
   )
 }

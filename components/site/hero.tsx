@@ -96,7 +96,7 @@ export function Hero() {
         <div className="flex flex-wrap gap-3">
           <Button
             asChild
-            className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500"
+            className="bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 will-change-transform transition-transform duration-200 ease-out hover:translate-y-[-1px]"
           >
             <a href="#contact">
               Let&apos;s build something amazing

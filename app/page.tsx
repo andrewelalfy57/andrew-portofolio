@@ -15,6 +15,7 @@ import { MotionSection } from "@/components/site/motion-section";
 import { Education } from "@/components/site/education";
 import { Aurora } from "@/components/site/aurora";
 import { Splash } from "@/components/site/splash";
+import { Marquee } from "@/components/site/marquee";
 
 export default function Page() {
   const [showSplash, setShowSplash] = useState(true);
@@ -42,6 +43,15 @@ export default function Page() {
         )}
       </AnimatePresence>
 
+      {/* Exposure overlay for a subtle white-to-content fade after splash */}
+      <motion.div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 z-[65] bg-white dark:bg-[#0a0e27]"
+        initial={{ opacity: 0 }}
+        animate={showSplash ? { opacity: 0 } : { opacity: 0 }}
+        exit={{ opacity: 0 }}
+      />
+
       <motion.div
         key="content"
         className="relative z-10"
@@ -59,6 +69,9 @@ export default function Page() {
         <MotionSection id="home">
           <Hero />
         </MotionSection>
+        <div className="mx-auto max-w-7xl px-4 md:px-6">
+          <Marquee />
+        </div>
         <MotionSection id="experience" resetOnExit>
           <ExperienceTimeline />
         </MotionSection>

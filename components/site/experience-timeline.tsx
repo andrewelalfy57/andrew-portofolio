@@ -1,20 +1,33 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Briefcase } from "lucide-react"
-import { experience } from "@/lib/data"
-import { Card } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
+import { motion } from "framer-motion";
+import { Briefcase } from "lucide-react";
+import { experience } from "@/lib/data";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 export function ExperienceTimeline() {
   return (
     <section className="relative bg-slate-50/80 py-20 backdrop-blur-[1px] dark:bg-[#0f1433]/80">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <header className="mb-14 text-center">
-          <h3 className="bg-gradient-to-r from-cyan-500 to-indigo-600 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl">
-            Experience
-          </h3>
-          <p className="mt-2 text-slate-600 dark:text-slate-300">
+          <div className="inline-block">
+            <h3 className="relative bg-gradient-to-r from-cyan-500 to-indigo-600 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl">
+              Experience
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -bottom-2 left-0 block h-[3px] w-0 bg-gradient-to-r from-cyan-500 to-indigo-600 transition-[width] duration-700 ease-out will-change-[width] [content:''] group-hover:w-full"
+              />
+            </h3>
+            <motion.div
+              className="mt-1 h-[3px] w-0 bg-gradient-to-r from-cyan-500 to-indigo-600"
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              viewport={{ once: true, amount: 0.9 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            />
+          </div>
+          <p className="mt-4 text-slate-600 dark:text-slate-300">
             Enterprise platforms, cloud-native systems, and immersive tech.
           </p>
         </header>
@@ -26,7 +39,7 @@ export function ExperienceTimeline() {
 
           <div className="space-y-10 md:space-y-16">
             {experience.map((item, idx) => {
-              const left = idx % 2 === 0
+              const left = idx % 2 === 0;
               return (
                 <motion.div
                   key={item.title + idx}
@@ -36,7 +49,7 @@ export function ExperienceTimeline() {
                   transition={{ duration: 0.5, delay: idx * 0.05 }}
                   className={cn(
                     "md:grid md:grid-cols-2 md:items-start md:gap-10",
-                    left && "md:[&>div:first-child]:order-2",
+                    left && "md:[&>div:first-child]:order-2"
                   )}
                 >
                   <div className="relative md:col-span-1">
@@ -66,18 +79,18 @@ export function ExperienceTimeline() {
                     <span
                       className={cn(
                         "absolute top-6 hidden h-5 w-5 -translate-y-1/2 rounded-full bg-gradient-to-r from-cyan-500 to-indigo-600 ring-4 ring-slate-50 dark:ring-[#0f1433] md:block",
-                        left ? "-left-6" : "-right-6",
+                        left ? "-left-6" : "-right-6"
                       )}
                     />
                   </div>
 
                   <div aria-hidden className="md:col-span-1" />
                 </motion.div>
-              )
+              );
             })}
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

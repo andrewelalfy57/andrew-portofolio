@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { projects } from "@/lib/data"
-import { Card } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Github, Globe, Sparkles } from "lucide-react"
-import { motion } from "framer-motion"
+import Image from "next/image";
+import { projects } from "@/lib/data";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Github, Globe, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function Projects() {
   return (
@@ -26,15 +26,27 @@ export function Projects() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.15 }}
-          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.08 } },
+          }}
         >
           {projects.map((p) => (
-            <motion.div key={p.title} variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}>
-              <Card className="group overflow-hidden border-slate-200/60 bg-white/85 shadow-xl ring-1 ring-transparent transition-all hover:-translate-y-1 hover:shadow-2xl hover:ring-cyan-300/40 dark:border-slate-700/60 dark:bg-slate-900/60 dark:hover:ring-indigo-800/40">
+            <motion.div
+              key={p.title}
+              variants={{
+                hidden: { opacity: 0, y: 16 },
+                show: { opacity: 1, y: 0 },
+              }}
+            >
+              <Card className="group overflow-hidden border-slate-200/60 bg-white/85 shadow-xl ring-1 ring-transparent transition-all [transform-style:preserve-3d] hover:-translate-y-1 hover:shadow-2xl hover:ring-cyan-300/40 dark:border-slate-700/60 dark:bg-slate-900/60 dark:hover:ring-indigo-800/40">
                 <div className="relative h-48 w-full overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-indigo-600" />
                   <Image
-                    src={p.image ?? "/placeholder.svg?height=600&width=1200&query=project%20preview%20hero%20wide"}
+                    src={
+                      p.image ??
+                      "/placeholder.svg?height=600&width=1200&query=project%20preview%20hero%20wide"
+                    }
                     alt={p.title}
                     fill
                     className="object-cover mix-blend-overlay transition-transform duration-500 group-hover:scale-[1.05]"
@@ -48,7 +60,9 @@ export function Projects() {
                 </div>
                 <div className="space-y-3 p-5">
                   <h4 className="text-lg font-bold">{p.title}</h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-300">{p.description}</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">
+                    {p.description}
+                  </p>
                   <div className="flex flex-wrap gap-2">
                     {p.tech.map((t) => (
                       <Badge
@@ -62,15 +76,32 @@ export function Projects() {
                   </div>
                   <div className="flex gap-2 pt-2">
                     {p.live && (
-                      <Button asChild size="sm" className="bg-gradient-to-r from-cyan-500 to-indigo-600">
-                        <a href={p.live} target="_blank" rel="noopener noreferrer">
+                      <Button
+                        asChild
+                        size="sm"
+                        className="bg-gradient-to-r from-cyan-500 to-indigo-600 will-change-transform transition-transform duration-200 ease-out hover:translate-y-[-1px]"
+                      >
+                        <a
+                          href={p.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <Globe className="mr-2 h-4 w-4" /> Live
                         </a>
                       </Button>
                     )}
                     {p.code && (
-                      <Button asChild size="sm" variant="outline">
-                        <a href={p.code} target="_blank" rel="noopener noreferrer">
+                      <Button
+                        asChild
+                        size="sm"
+                        variant="outline"
+                        className="will-change-transform transition-transform duration-200 ease-out hover:translate-y-[-1px]"
+                      >
+                        <a
+                          href={p.code}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <Github className="mr-2 h-4 w-4" /> Code
                         </a>
                       </Button>
@@ -84,7 +115,12 @@ export function Projects() {
       </div>
       <style jsx>{`
         .shimmer {
-          background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.4) 20%, transparent 40%);
+          background: linear-gradient(
+            120deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.4) 20%,
+            transparent 40%
+          );
           transform: translateX(-100%);
           animation: sweep 1.8s ease-out infinite;
         }
@@ -95,5 +131,5 @@ export function Projects() {
         }
       `}</style>
     </section>
-  )
+  );
 }

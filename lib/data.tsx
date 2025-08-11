@@ -1,4 +1,3 @@
-import React from "react";
 import { Code, Cpu, Layers, Languages } from "lucide-react";
 
 export const experience = [
